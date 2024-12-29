@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, input } from '@angular/core';
 
 @Component({
   selector: 'app-results-info',
@@ -6,7 +6,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   styleUrl: './results-info.component.css'
 })
 export class ResultsInfoComponent implements OnChanges {
-  @Input() data: item[] = []
+  data = input<item[] | undefined>([]);
+
 
   constructor() {
     console.log(this.data)

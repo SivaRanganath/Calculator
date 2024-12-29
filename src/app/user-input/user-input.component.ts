@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output } from '@angular/core';
 import { item } from '../results-info/results-info.component';
 
 @Component({
@@ -7,7 +7,8 @@ import { item } from '../results-info/results-info.component';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  @Output() emitAnnualdata: EventEmitter<item[]> = new EventEmitter<item[]>();
+  // @Output() emitAnnualdata: EventEmitter<item[]> = new EventEmitter<item[]>();
+  emitAnnualdata = output<item[]>();
   initialInvestment = 0;
   annualInvestment = 0;
   expectedReturn = 0;
@@ -32,11 +33,7 @@ export class UserInputComponent {
           totalAmountInvested: this.initialInvestment + this.annualInvestment * year,
         });
       }
-
-      console.log(annualData);
-      this.emitAnnualdata.emit(annualData)
-
-  return annualData;
+      this.emitAnnualdata.emit(annualData);
   }
 
 }
